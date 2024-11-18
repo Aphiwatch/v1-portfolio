@@ -1,0 +1,14 @@
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    container_name: dockers-next
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./:/src
+      - /src/.next
+    environment:
+      - NODE_ENV=development
