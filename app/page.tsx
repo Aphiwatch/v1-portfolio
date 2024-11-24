@@ -1,14 +1,14 @@
 import Link from "next/link";
 import { FaLinkedinIn } from "react-icons/fa";
-import { TbBrandGithubFilled } from "react-icons/tb";
-import { FcContacts, FcGoogle } from "react-icons/fc";
+import { TbBrandGithubFilled, TbDownload  } from "react-icons/tb";
+import { FcContacts } from "react-icons/fc";
 import Image from "next/image";
 import profilePic from "@/assets/image/01.png";
 import { FaLocationDot } from "react-icons/fa6";
 
 export default function Home() {
   return (
-    <div className="flex flex-grow justify-center items-center xl:px-12 font-[family-name:var(--font-geist-sans)]">
+    <div className="flex flex-auto justify-center items-center xl:px-12 font-[family-name:var(--font-geist-sans)]">
       {/* main */}
       <div className="container mx-auto grid h-full w-full grid-cols-8 grid-rows-8 gap-8">
         {/* hero section */}
@@ -24,7 +24,7 @@ export default function Home() {
           </div>
 
           {/* Name and Location */}
-          <div className="mt-4 mb-4 flex-grow ">
+          <div className="flex justify-center items-center">
             <div className="flex flex-col justify-center items-start">
               <p className="text-5xl font-bold pb-2">Hello I'm Bank</p>
               <h1 className="text-4xl font-regular pb-2">Aphiwat Chalongtham</h1>
@@ -36,10 +36,17 @@ export default function Home() {
           </div>
 
           {/* Button */}
-          <div className="mt-4 mb-4">
-            <button className="w-full bg-primary hover:bg-secondary text-white hover:text-primary py-2 px-4 rounded-lg font-medium shadow-sm focus:outline-none focus:ring-2 focus:ring-purple-400">
-              Download CV
+          <div className="flex justify-center p-8 items-center">
+            <button className="
+              bg-primary text-primary-foreground hover:bg-primary/90 
+              rounded-xl font-medium text-2xl">
+              <div className="p-6 flex justify-center items-center gap-2">
+                <p>Download CV</p>
+                <TbDownload />
+              </div>
+              
             </button>
+            
           </div>
         </div>
 
