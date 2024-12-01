@@ -1,10 +1,16 @@
 import Link from "next/link";
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaHtml5, FaCss3, FaJs } from "react-icons/fa";
+import {
+  SiTailwindcss,
+  SiNextdotjs,
+  SiFlutter,
+  SiTypescript,
+} from "react-icons/si";
 import { TbBrandGithubFilled, TbDownload } from "react-icons/tb";
-import { FcContacts } from "react-icons/fc";
+import { IoMdContact } from "react-icons/io";
 import Image from "next/image";
 import profilePic from "@/assets/image/01.png";
-import { FaLocationDot } from "react-icons/fa6";
+import { FaLocationDot, FaGolang, FaPython } from "react-icons/fa6";
 
 const workexp = [
   {
@@ -16,9 +22,20 @@ const workexp = [
     role: "Mobile Developer",
     company: "KTW",
     date: "May 2024",
-  }
+  },
 ];
- 
+
+const skills = [
+  { name: "Golang", icon: FaGolang },
+  { name: "Python", icon: FaPython },
+  { name: "Next.js", icon: SiNextdotjs },
+  { name: "Flutter", icon: SiFlutter },
+  { name: "Tailwind CSS", icon: SiTailwindcss },
+  { name: "HTML", icon: FaHtml5 },
+  { name: "CSS", icon: FaCss3 },
+  { name: "JavaScript", icon: FaJs },
+];
+
 export default function Home() {
   return (
     <div className="flex flex-auto justify-center items-center xl:px-12 font-[family-name:var(--font-geist-sans)]">
@@ -76,8 +93,26 @@ export default function Home() {
         </div>
 
         {/* skills section */}
-        <div className="col-span-2 row-span-3 bg-accent rounded-3xl flex justify-center items-center shadow-lg">
-          Skills
+        <div className="col-span-2 row-span-3 bg-accent rounded-3xl flex justify-center items-center relative overflow-hidden shadow-lg group">
+          <Link href="/about">
+            {/* Grid for skills */}
+            <div className="absolute inset-0 p-8 grid grid-cols-3 grid-rows-2 gap-12">
+              {skills.map((skill, index) => (
+                <div key={index} className="flex justify-center items-center">
+                  <skill.icon className="text-5xl" />
+                </div>
+              ))}
+            </div>
+
+            {/* Hover overlay */}
+            <div className="absolute inset-0 p-8 bg-black text-white bg-opacity-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300 grid grid-cols-3 grid-rows-2 gap-12 bg-primary">
+              {skills.map((skill, index) => (
+                <div key={index} className="flex justify-center items-center">
+                  <skill.icon className="text-5xl" />
+                </div>
+              ))}
+            </div>
+          </Link>
         </div>
 
         {/* Github section */}
@@ -110,27 +145,27 @@ export default function Home() {
 
         {/* about section */}
         <div className="col-span-3 row-span-4 bg-accent rounded-3xl flex justify-center items-center shadow-lg">
-            <div className="flex flex-col justify-center gap-16">
-              {workexp.map((exp) => (
-                <div className="text-2xl">
-                  <p className="text-primary">{exp.role}</p>
-                  <p className="font-bold">{exp.company}</p>
-                  <div className="flex items-center gap-3">
-                    <span className="w-[8px] h-[8px] rounded-full bg-primary"></span>
-                    <p>{exp.date}</p>
-                  </div>
+          <div className="flex flex-col justify-center gap-16">
+            {workexp.map((exp) => (
+              <div className="text-2xl">
+                <p className="text-primary">{exp.role}</p>
+                <p className="font-bold">{exp.company}</p>
+                <div className="flex items-center gap-3">
+                  <span className="w-[8px] h-[8px] rounded-full bg-primary"></span>
+                  <p>{exp.date}</p>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         {/* contact section */}
         <div className="col-span-2 row-span-2 bg-accent rounded-3xl flex justify-center items-center relative overflow-hidden shadow-lg group">
           <Link href="/contact">
-            <FcContacts className="text-7xl" />
+            <IoMdContact className="text-7xl" />
             <div className="absolute inset-0 bg-primary text-white bg-opacity-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
               <div className="absolute inset-0 bg-green-600">
-                <FcContacts className="text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
+                <IoMdContact className="text-7xl absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2" />
               </div>
             </div>
           </Link>
