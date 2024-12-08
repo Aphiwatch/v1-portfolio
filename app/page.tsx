@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FaLinkedinIn, FaHtml5, FaCss3, FaJs } from "react-icons/fa";
+import { FaLinkedinIn, FaHtml5, FaCss3, FaJs, FaFolderOpen } from "react-icons/fa";
 import {
   SiTailwindcss,
   SiNextdotjs,
@@ -11,19 +11,7 @@ import { IoMdContact } from "react-icons/io";
 import Image from "next/image";
 import profilePic from "@/assets/image/01.png";
 import { FaLocationDot, FaGolang, FaPython } from "react-icons/fa6";
-
-const workexp = [
-  {
-    role: "Software Developer",
-    company: "Extend It Resource Co., Ltd.",
-    date: "Jul - Oct 2024",
-  },
-  {
-    role: "Mobile Developer",
-    company: "KTW",
-    date: "May 2024",
-  },
-];
+import { workexp } from "./about/data";
 
 const skills = [
   { name: "Golang", icon: FaGolang },
@@ -88,8 +76,17 @@ export default function Home() {
         </div>
 
         {/* projects section */}
-        <div className="col-span-3 row-span-3 bg-accent rounded-3xl flex justify-center items-center shadow-lg">
-          Projects
+        <div className="col-span-3 row-span-3 bg-accent rounded-3xl flex justify-center items-center relative overflow-hidden shadow-lg group">
+          <Link href="/projects">
+          <FaFolderOpen className="text-7xl" />
+            <div className="absolute inset-0 bg-primary text-white bg-opacity-100 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+              <div className="absolute inset-0 bg-yellow-400">
+                <div className="absolute inset-0 flex flex-row justify-center items-center gap-4">
+                  <FaFolderOpen className="text-7xl" />
+                </div>
+              </div>
+            </div>
+          </Link>
         </div>
 
         {/* skills section */}
@@ -147,7 +144,7 @@ export default function Home() {
         <div className="col-span-3 row-span-4 bg-accent rounded-3xl flex justify-center items-center shadow-lg">
           <div className="flex flex-col justify-center gap-16">
             {workexp.map((exp) => (
-              <div className="text-2xl">
+              <div key={exp.id} className="text-2xl">
                 <p className="text-primary">{exp.role}</p>
                 <p className="font-bold">{exp.company}</p>
                 <div className="flex items-center gap-3">
