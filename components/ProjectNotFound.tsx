@@ -13,7 +13,7 @@ export default function ProjectNotFound() {
             >
                 <button
                 className="px-6 py-4 bg-red-600 text-white rounded-lg hover:bg-red-700 transition"
-                >Go Back
+                >Go to Project Page
                 </button></Link>
         </div>
     </div>

@@ -1,13 +1,5 @@
 import { projects } from "@/app/projects/data";
 import Link from "next/link";
-// import {
-//     Card,
-//     CardContent,
-//     CardDescription,
-//     CardFooter,
-//     CardHeader,
-//     CardTitle,
-//   } from "@/components/ui/card"
 
 import Card from "@/components/Card";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -24,7 +16,8 @@ export default function Projects() {
             <Card 
             imgsrc={project.image} 
             name={project.name} 
-            stack={project.stack} />
+            stack={project.stack}
+            />
           </Link>
         ))}
       </div>

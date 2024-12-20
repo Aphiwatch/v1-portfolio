@@ -1,6 +1,11 @@
+interface StackItem {
+  icon: React.ReactNode;
+  name: string;         
+}
+
 interface CardProps {
   name: string;
-  stack: string;
+  stack: StackItem[];
   imgsrc: string;
 }
 import Image from "next/image";
@@ -18,7 +23,13 @@ const Card = ({ name, stack, imgsrc }: CardProps) => {
         />
 
       <h2 className="text-lg font-bold uppercase">{name}</h2>
-      <div className="text-lg">{stack}</div>
+      <div className="flex flex-row gap-4 text-xl">
+        {stack.map((item, index) => (
+          <div key={index} className="flex items-center gap-2">
+            <div className="text-4xl">{item.icon}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };

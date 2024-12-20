@@ -1,37 +1,63 @@
+import {
+    SiGo,
+    SiPostgresql,
+    SiFlutter,
+    SiNextdotjs,
+    SiTailwindcss
+  } from "react-icons/si";
+
 export const projects = [
     {
         id: "1",
-        name: "Web Application",
+        name: "Mr. Kiwi",
         description: "Is a web application for make better experience for user.",
-        stack: "Next.js, TypeScript, Tailwind CSS, Golang",
+        role: "Software Developer",
+        duration: "2023 - 2024",
+        stack: [
+            {
+                icon: <SiNextdotjs/>,
+                name: "Next.js"
+            },
+            {
+                icon: <SiTailwindcss/>,
+                name: "TailwindCSS"
+          },
+          {
+            icon: <SiGo/>,
+            name: "Golang"
+          },
+        ],
         image: "/images/404.png",
+        preview_image:["/images/404.png","/images/404.png","/images/404.png"],
         repository: "https://google.com",
         demo: "https://google.com"
     },
     {
         id: "2",
-        name: "Mobile Application",
-        description: "Is a mobile application for make better experience for user.",
-        stack: "Flutter, Dart, Firebase",
-        image: "/images/404.png",
-        repository: "https://google.com",
-        demo: "https://google.com"
-    },
-    {
-        id: "3",
-        name: "Desktop Application",
-        description: "Is a desktop application for make better experience for user.",
-        stack: "Electron, React, TypeScript, Tailwind CSS",
-        image: "/images/404.png",
-        repository: "https://google.com",
-        demo: "https://google.com"
-    },
-    {
-        id: "4",
-        name: "Web Application",
+        name: "Smart Fire Detection app",
         description: "Is a web application for make better experience for user.",
-        stack: "Next.js, TypeScript, Tailwind CSS, Golang",
+        role: "Mobile Developer",
+        duration: "2023 - 2024",
+        stack: [
+            {
+                icon: <SiFlutter/>,
+                name: "Flutter"
+            },
+            {
+                icon: <SiPostgresql/>,
+                name: "PostgreSQL"
+          },
+          {
+            icon: <SiGo/>,
+            name: "Golang"
+          },
+        ],
         image: "/images/404.png",
+        preview_image:[
+          "/previews/pv_01.png",
+          "/previews/pv_02.png",
+          "/previews/pv_03.png"
+        ],
         repository: "https://google.com",
         demo: "https://google.com"
     },
