@@ -6,7 +6,7 @@ export default function NotFound404() {
     <div className="flex flex-auto justify-center items-center xl:px-12 font-[family-name:var(--font-geist-sans)]">
       <div className="container mx-auto flex flex-col justify-center items-center h-full w-full gap-8">
         <Image
-          src="/images/404.png"
+          src="/portfolio/images/404.png"
           alt="404 Not Found"
           width={600}
           height={600}
