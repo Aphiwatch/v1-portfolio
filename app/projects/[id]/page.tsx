@@ -1,4 +1,3 @@
-"use client";
 import { projects } from "@/app/projects/data";
 import ProjectNotFound from "@/components/ProjectNotFound";
 import { BsArrowUpRight, BsGithub, BsArrowLeft } from "react-icons/bs";
