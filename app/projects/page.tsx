@@ -11,88 +11,94 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 import {
-    SiGo,
-    SiPostgresql,
-    SiFlutter,
-    SiNextdotjs,
-    SiTailwindcss
-  } from "react-icons/si";
-import { useState } from "react";
+  SiGo,
+  SiPostgresql,
+  SiFlutter,
+  SiNextdotjs,
+  SiTailwindcss,
+} from "react-icons/si";
+import { useState, useEffect } from "react";
 
 const projects = [
-    {
-        id: "1",
-        name: "Mr. Kiwi",
-        description: "Is a web application for make better experience for user.",
-        role: "Software Developer",
-        duration: "2023 - 2024",
-        stack: [
-            {
-                icon: <SiNextdotjs/>,
-                name: "Next.js"
-            },
-            {
-                icon: <SiTailwindcss/>,
-                name: "TailwindCSS"
-          },
-          {
-            icon: <SiGo/>,
-            name: "Golang"
-          },
-        ],
-        preview_image:[
-          "/images/404.png",
-          "/images/404.png",
-          "/images/404.png"
-        ],
-        repository: "https://google.com",
-        demo: "https://google.com"
-    },
-    {
-        id: "2",
-        name: "Smart Fire Detection app",
-        description: "Is a web application for make better experience for user.",
-        role: "Mobile Developer",
-        duration: "2023 - 2024",
-        stack: [
-            {
-                icon: <SiFlutter/>,
-                name: "Flutter"
-            },
-            {
-                icon: <SiPostgresql/>,
-                name: "PostgreSQL"
-          },
-          {
-            icon: <SiGo/>,
-            name: "Golang"
-          },
-        ],
-        preview_image:[
-          "/previews/pv_01.png",
-          "/previews/pv_02.png",
-          "/previews/pv_03.png"
-        ],
-        repository: "https://google.com",
-        demo: "https://google.com"
-    },
-    
-]
+  {
+    id: "1",
+    name: "Mr. Kiwi",
+    description:
+      "Is a web application for make better experience for user.",
+    role: "Software Developer",
+    duration: "2023 - 2024",
+    stack: [
+      {
+        icon: <SiNextdotjs />,
+        name: "Next.js",
+      },
+      {
+        icon: <SiTailwindcss />,
+        name: "TailwindCSS",
+      },
+      {
+        icon: <SiGo />,
+        name: "Golang",
+      },
+    ],
+    preview_image: ["/images/404.png", "/images/404.png", "/images/404.png"],
+    repository: "https://google.com",
+    demo: "https://google.com",
+  },
+  {
+    id: "2",
+    name: "Smart Fire Detection app",
+    description:
+      "Is a web application for make better experience for user.",
+    role: "Mobile Developer",
+    duration: "2023 - 2024",
+    stack: [
+      {
+        icon: <SiFlutter />,
+        name: "Flutter",
+      },
+      {
+        icon: <SiPostgresql />,
+        name: "PostgreSQL",
+      },
+      {
+        icon: <SiGo />,
+        name: "Golang",
+      },
+    ],
+    preview_image: [
+      "/previews/pv_01.png",
+      "/previews/pv_02.png",
+      "/previews/pv_03.png",
+    ],
+    repository: "https://google.com",
+    demo: "https://google.com",
+  },
+];
 
 export default function ProjectsPage() {
+  const { projectId } = useParams(); // ใช้ params จาก URL
   const [project, setProject] = useState(projects[0]);
-  const params = useParams();
+
+  useEffect(() => {
+    if (projectId) {
+      const selectedProject = projects.find((p) => p.id === projectId);
+      if (selectedProject) {
+        setProject(selectedProject);
+      }
+    }
+  }, [projectId]);
 
   // ฟังก์ชันเพื่อสลับ project ไปยังก่อนหน้า
   const handlePrevProject = () => {
-    const currentIndex = projects.findIndex(p => p.id === project.id);
+    const currentIndex = projects.findIndex((p) => p.id === project.id);
     const prevIndex = (currentIndex - 1 + projects.length) % projects.length;
     setProject(projects[prevIndex]);
   };
 
   // ฟังก์ชันเพื่อสลับ project ไปยังถัดไป
   const handleNextProject = () => {
-    const currentIndex = projects.findIndex(p => p.id === project.id);
+    const currentIndex = projects.findIndex((p) => p.id === project.id);
     const nextIndex = (currentIndex + 1) % projects.length;
     setProject(projects[nextIndex]);
   };
@@ -199,7 +205,7 @@ export default function ProjectsPage() {
           <div className="w-full flex flex-col">
             <ScrollArea className="h-[800px] w-full">
               <div className="flex flex-row flex-wrap gap-6">
-                {project?.preview_image.map((image, index) => (
+                {project?.preview_image?.map((image, index) => (
                   <Image
                     key={index}
                     src={image}
