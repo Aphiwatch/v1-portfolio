@@ -20,7 +20,7 @@ import {
   } from "react-icons/si";
 import { useState } from "react";
 
-export const projects = [
+const projects = [
     {
         id: "1",
         name: "Mr. Kiwi",
@@ -78,7 +78,7 @@ export const projects = [
     
 ]
 
-export default function Details() {
+export default function ProjectsPage() {
   const [project, setProject] = useState(projects[0]);
   const params = useParams();
 
