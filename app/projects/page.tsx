@@ -41,9 +41,9 @@ const projects = [
           },
         ],
         preview_image:[
-          "/public/images/404.png",
-          "/public/images/404.png",
-          "/public/images/404.png"
+          "/images/404.png",
+          "/images/404.png",
+          "/images/404.png"
         ],
         repository: "https://google.com",
         demo: "https://google.com"
@@ -69,9 +69,9 @@ const projects = [
           },
         ],
         preview_image:[
-          "/public/previews/pv_01.png",
-          "/public/previews/pv_02.png",
-          "/public/previews/pv_03.png"
+          "/previews/pv_01.png",
+          "/previews/pv_02.png",
+          "/previews/pv_03.png"
         ],
         repository: "https://google.com",
         demo: "https://google.com"
