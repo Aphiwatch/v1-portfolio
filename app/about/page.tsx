@@ -16,7 +16,7 @@ import {
   SiTypescript,
 } from "react-icons/si";
 
-export const skills = [
+const skills = [
   { id: 1, name: "Golang", icon: FaGolang },
   { id: 2, name: "Python", icon: FaPython },
   { id: 3, name: "Next.js", icon: SiNextdotjs },
