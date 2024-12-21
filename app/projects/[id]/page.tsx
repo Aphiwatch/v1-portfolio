@@ -13,7 +13,13 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 
-export default function Details() {
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
+
+export default async function Details() {
   const { id } = useParams();
 
   const projectdata = projects.find((project) => project.id === id);
