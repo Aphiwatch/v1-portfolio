@@ -11,7 +11,6 @@ export default function NotFound404() {
           width={600}
           height={600}
           priority={true}
-          className="w-auto h-auto"
         />
         <h1 className="text-4xl font-semibold">
           Oops! Looks like you're too fast, but the page is already missing !
