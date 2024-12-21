@@ -7,7 +7,7 @@ export default function NotFound404() {
       <div className="container mx-auto flex flex-col justify-center items-center h-full w-full gap-8">
         <Image
           src="/images/404.png"
-          alt="The Flash 404"
+          alt="404 Not Found"
           width={600}
           height={600}
           priority={true}

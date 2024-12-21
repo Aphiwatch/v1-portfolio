@@ -2,7 +2,7 @@
 import { useParams } from "next/navigation";
 import { projects } from "@/app/projects/data";
 import ProjectNotFound from "@/components/ProjectNotFound";
-import { BsArrowUpRight, BsGithub } from "react-icons/bs";
+import { BsArrowUpRight, BsGithub, BsArrowLeft } from "react-icons/bs";
 import Link from "next/link";
 import {
   Tooltip,
@@ -94,36 +94,54 @@ export default function Details() {
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Links
             </div>
-            <div className="flex items-center gap-6">
-              {/* liveproject button */}
-              <div
-                className="bg-accent
+            <div className="flex flex-row justify-between">
+              {/* left section */}
+              <div className="flex flex-row gap-6">
+                {/* liveproject button */}
+                <div
+                  className="bg-accent
                 p-3 rounded-full flex justify-center items-center group"
-              >
-                <Link href={demo} target="_blank" rel="noopener noreferrer">
-                  <BsArrowUpRight
-                    className="text-4xl 
+                >
+                  <Link href={demo} target="_blank" rel="noopener noreferrer">
+                    <BsArrowUpRight
+                      className="text-4xl 
                       group-hover:text-primary transition-all duration-200"
-                  />
-                </Link>
+                    />
+                  </Link>
+                </div>
+
+                {/* github project button */}
+                <div
+                  className="bg-accent
+                p-3 rounded-full flex justify-center items-center group"
+                >
+                  <Link
+                    href={repository}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub
+                      className="text-4xl 
+                      group-hover:text-primary transition-all duration-200"
+                    />
+                  </Link>
+                </div>
               </div>
 
-              {/* github project button */}
-              <div
-                className="bg-accent
-                p-3 rounded-full flex justify-center items-center group"
-              >
-                <Link
-                  href={repository}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <BsGithub
-                    className="text-4xl 
+              {/* right section : back button */}
+                <div className="flex items-center justify-end">
+                  <Link href="/projects">
+                    <div
+                      className="bg-accent
+                    p-3 rounded-full flex justify-center items-center gap-2 group"
+                    >
+                      <BsArrowLeft
+                        className="text-4xl 
                       group-hover:text-primary transition-all duration-200"
-                  />
-                </Link>
-              </div>
+                      />
+                    </div>
+                  </Link>
+                </div>
             </div>
           </div>
 
