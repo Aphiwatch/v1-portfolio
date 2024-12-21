@@ -17,14 +17,13 @@ interface PageProps {
   };
 }
 
-export async function generateStaticParams() {
-  return projects.map((project) => ({
+export async function generateStaticParams(): Promise<Array<{ id: string }>> {
+  return projects.map((project): { id: string } => ({
     id: project.id,
   }));
 }
 
 export default async function Details({ params }: PageProps) {
-  // รอให้ params resolve ก่อน
   const resolvedParams = await params;
   const { id } = resolvedParams;
 
