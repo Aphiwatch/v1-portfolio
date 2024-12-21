@@ -1,6 +1,5 @@
 "use client";
 import { useParams } from "next/navigation";
-import ProjectNotFound from "@/components/ProjectNotFound";
 import { BsArrowUpRight, BsGithub, BsArrowLeft, BsArrowRight } from "react-icons/bs";
 import Link from "next/link";
 import {
@@ -41,7 +40,11 @@ const projects = [
             name: "Golang"
           },
         ],
-        preview_image:["/portfolio/public/images/404.png","/portfolio/public/images/404.png","/portfolio/public/images/404.png"],
+        preview_image:[
+          "/public/images/404.png",
+          "/public/images/404.png",
+          "/public/images/404.png"
+        ],
         repository: "https://google.com",
         demo: "https://google.com"
     },
@@ -66,9 +69,9 @@ const projects = [
           },
         ],
         preview_image:[
-          "/portfolio/public/previews/pv_01.png",
-          "/portfolio/public/previews/pv_02.png",
-          "/portfolio/public/previews/pv_03.png"
+          "/public/previews/pv_01.png",
+          "/public/previews/pv_02.png",
+          "/public/previews/pv_03.png"
         ],
         repository: "https://google.com",
         demo: "https://google.com"
