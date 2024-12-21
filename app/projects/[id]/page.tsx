@@ -12,19 +12,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 
 interface PageProps {
-  params: Promise<{
+  params: {
     id: string;
-  }>;
+  };
 }
 
-// แก้ไขการสร้าง static params ให้รองรับ Promise
 export async function generateStaticParams() {
-  const params = projects.map((project) => ({
-    params: { id: project.id },
+  return projects.map((project) => ({
+    id: project.id,
   }));
-
-  // คืนค่าเป็น Promise ที่ resolve ได้
-  return Promise.resolve(params);
 }
 
 export default async function Details({ params }: PageProps) {
