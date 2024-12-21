@@ -1,4 +1,3 @@
-import { useParams } from "next/navigation";
 import { projects } from "@/app/projects/data";
 import ProjectNotFound from "@/components/ProjectNotFound";
 import { BsArrowUpRight, BsGithub, BsArrowLeft } from "react-icons/bs";
@@ -19,8 +18,7 @@ export async function generateStaticParams() {
 }
 
 export default async function Details() {
-  const { id } = useParams();
-
+  const { id } = await import("next/navigation").then((m) => m.useParams());
   const projectdata = projects.find((project) => project.id === id);
 
   if (!projectdata) {
