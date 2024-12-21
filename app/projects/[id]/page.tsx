@@ -11,14 +11,20 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 
+interface PageProps {
+  params: {
+    id: string;
+  };
+}
+
 // Generate static parameters for dynamic routes
 export async function generateStaticParams() {
   return projects.map((project) => ({
-    id: project.id,
+    params: { id: project.id }, // ใส่ params เพื่อให้ตรงกับข้อกำหนด
   }));
 }
 
-export default function Details({ params }: { params: { id: string } }) {
+export default function Details({ params }: PageProps) {
   const { id } = params;
 
   const projectdata = projects.find((project) => project.id === id);
