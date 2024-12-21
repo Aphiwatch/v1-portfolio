@@ -1,3 +1,5 @@
+"use client";
+import { useParams } from "next/navigation";
 import { projects } from "@/app/projects/data";
 import ProjectNotFound from "@/components/ProjectNotFound";
 import { BsArrowUpRight, BsGithub, BsArrowLeft } from "react-icons/bs";
@@ -11,21 +13,8 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 
-interface PageProps {
-  params: {
-    id: string;
-  };
-}
-
-export async function generateStaticParams(): Promise<Array<{ id: string }>> {
-  return projects.map((project): { id: string } => ({
-    id: project.id,
-  }));
-}
-
-export default async function Details({ params }: PageProps) {
-  const resolvedParams = await params;
-  const { id } = resolvedParams;
+export default function Details() {
+  const { id } = useParams();
 
   const projectdata = projects.find((project) => project.id === id);
 
@@ -47,24 +36,32 @@ export default async function Details({ params }: PageProps) {
   return (
     <div className="flex flex-auto justify-center items-center xl:px-12 font-[family-name:var(--font-geist-sans)]">
       <div className="container mx-auto grid h-full w-full">
+        {/* main */}
         <div className="flex flex-row justify-center items-center gap-4">
+          {/* left section */}
           <div className="w-full h-full flex flex-col justify-between">
+            {/* project name */}
             <div className="text-6xl font-semibold">{name}</div>
+
+            {/* project description */}
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Description
             </div>
             <div className="text-2xl font-regular">{description}</div>
 
+            {/* project role */}
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Role
             </div>
             <div className="text-2xl font-regular">{role}</div>
 
+            {/* project duration */}
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Duration
             </div>
             <div className="text-2xl font-regular">{duration}</div>
 
+            {/* project stack */}
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Stack
             </div>
@@ -73,8 +70,14 @@ export default async function Details({ params }: PageProps) {
                 <TooltipProvider key={index}>
                   <Tooltip>
                     <TooltipTrigger>
-                      <div className="bg-accent p-3 rounded-full flex justify-center items-center group">
-                        <div className="text-4xl group-hover:text-primary transition-all duration-200">
+                      <div
+                        className="bg-accent
+                          p-3 rounded-full flex justify-center items-center group"
+                      >
+                        <div
+                          className="text-4xl group-hover:text-primary
+                              transition-all duration-200"
+                        >
                           {item.icon}
                         </div>
                       </div>
@@ -87,35 +90,63 @@ export default async function Details({ params }: PageProps) {
               ))}
             </div>
 
+            {/* project repository and demo */}
             <div className="text-4xl font-regular mt-4 mb-4 text-muted-foreground">
               Links
             </div>
             <div className="flex flex-row justify-between">
+              {/* left section */}
               <div className="flex flex-row gap-6">
-                <div className="bg-accent p-3 rounded-full flex justify-center items-center group">
+                {/* liveproject button */}
+                <div
+                  className="bg-accent
+                p-3 rounded-full flex justify-center items-center group"
+                >
                   <Link href={demo} target="_blank" rel="noopener noreferrer">
-                    <BsArrowUpRight className="text-4xl group-hover:text-primary transition-all duration-200" />
+                    <BsArrowUpRight
+                      className="text-4xl 
+                      group-hover:text-primary transition-all duration-200"
+                    />
                   </Link>
                 </div>
 
-                <div className="bg-accent p-3 rounded-full flex justify-center items-center group">
-                  <Link href={repository} target="_blank" rel="noopener noreferrer">
-                    <BsGithub className="text-4xl group-hover:text-primary transition-all duration-200" />
+                {/* github project button */}
+                <div
+                  className="bg-accent
+                p-3 rounded-full flex justify-center items-center group"
+                >
+                  <Link
+                    href={repository}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <BsGithub
+                      className="text-4xl 
+                      group-hover:text-primary transition-all duration-200"
+                    />
                   </Link>
                 </div>
               </div>
 
-              <div className="flex items-center justify-end">
-                <Link href="/projects">
-                  <div className="bg-accent p-3 rounded-full flex justify-center items-center gap-2 group">
-                    <BsArrowLeft className="text-4xl group-hover:text-primary transition-all duration-200" />
-                  </div>
-                </Link>
-              </div>
+              {/* right section : back button */}
+                <div className="flex items-center justify-end">
+                  <Link href="/projects">
+                    <div
+                      className="bg-accent
+                    p-3 rounded-full flex justify-center items-center gap-2 group"
+                    >
+                      <BsArrowLeft
+                        className="text-4xl 
+                      group-hover:text-primary transition-all duration-200"
+                      />
+                    </div>
+                  </Link>
+                </div>
             </div>
           </div>
 
-          <div className="w-full flex flex-col">
+          {/* right section */}
+          <div className=" w-full flex flex-col">
             <ScrollArea className="h-[800px] w-full">
               <div className="flex flex-row flex-wrap gap-6">
                 {preview_image.map((image, index) => (
