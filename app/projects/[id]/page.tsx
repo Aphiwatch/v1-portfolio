@@ -1,5 +1,4 @@
 "use client";
-import { useParams } from "next/navigation";
 import { projects } from "@/app/projects/data";
 import ProjectNotFound from "@/components/ProjectNotFound";
 import { BsArrowUpRight, BsGithub, BsArrowLeft } from "react-icons/bs";
@@ -13,8 +12,15 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area";
 import Image from "next/image";
 
-export default function Details() {
-  const { id } = useParams();
+// Generate static parameters for dynamic routes
+export async function generateStaticParams() {
+  return projects.map((project) => ({
+    id: project.id,
+  }));
+}
+
+export default function Details({ params }: { params: { id: string } }) {
+  const { id } = params;
 
   const projectdata = projects.find((project) => project.id === id);
 
@@ -97,7 +103,7 @@ export default function Details() {
             <div className="flex flex-row justify-between">
               {/* left section */}
               <div className="flex flex-row gap-6">
-                {/* liveproject button */}
+                {/* live project button */}
                 <div
                   className="bg-accent
                 p-3 rounded-full flex justify-center items-center group"
@@ -128,25 +134,25 @@ export default function Details() {
                 </div>
               </div>
 
-              {/* right section : back button */}
-                <div className="flex items-center justify-end">
-                  <Link href="/projects">
-                    <div
-                      className="bg-accent
+              {/* right section: back button */}
+              <div className="flex items-center justify-end">
+                <Link href="/projects">
+                  <div
+                    className="bg-accent
                     p-3 rounded-full flex justify-center items-center gap-2 group"
-                    >
-                      <BsArrowLeft
-                        className="text-4xl 
+                  >
+                    <BsArrowLeft
+                      className="text-4xl 
                       group-hover:text-primary transition-all duration-200"
-                      />
-                    </div>
-                  </Link>
-                </div>
+                    />
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
 
           {/* right section */}
-          <div className=" w-full flex flex-col">
+          <div className="w-full flex flex-col">
             <ScrollArea className="h-[800px] w-full">
               <div className="flex flex-row flex-wrap gap-6">
                 {preview_image.map((image, index) => (
