@@ -19,9 +19,12 @@ interface PageProps {
 
 // Generate static parameters for dynamic routes
 export async function generateStaticParams() {
-  return projects.map((project) => ({
-    params: { id: project.id }, // ใส่ params เพื่อให้ตรงกับข้อกำหนด
-  }));
+  // ใช้ Promise ในการส่งค่ากลับ
+  return Promise.resolve(
+    projects.map((project) => ({
+      params: { id: project.id }, // params ต้องอยู่ในรูปแบบนี้
+    }))
+  );
 }
 
 export default function Details({ params }: PageProps) {
